@@ -26,7 +26,7 @@ function LoginForm() {
 
     try {
       const res = await fetch(
-        "https://api.noroff.dev/api/v1/social/auth/login",
+        "https://api.noroff.dev/api/v1/auction/auth/login",
         {
           method: "POST",
           body: JSON.stringify(payload),
@@ -58,6 +58,8 @@ function LoginForm() {
 
       localStorage.setItem("access_token", data.accessToken);
       localStorage.setItem("user_name", data.name);
+      localStorage.setItem("user_avatar", data.avatar);
+      localStorage.setItem("user_credits", data.credits);
 
       setData(data);
       setIsSuccess(res.ok);

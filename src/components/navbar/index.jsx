@@ -1,91 +1,58 @@
-import { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
 import { NAVIGATION } from "../../lib/constants";
+import { useState } from "react";
 
-export default function Navigation() {
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setDropdownVisible(!isDropdownVisible);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
   };
-
-  const handleLogout = () => {
-    console.log("Logging out");
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("user_name");
-    console.log("Logged out");
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
-    <div className="navbar">
-      <div className="navbar-start">
+    <nav className="bg-blue-500 p-4">
+      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between">
+        {/* Logo on the left */}
+        <div>
+          <Link
+            to="/"
+            className="text-white text-lg lg:text-3xl font-extrabold tracking-tight"
+          >
+            Auction House
+          </Link>
+        </div>
+
+        {/* Hamburger icon for small screens on the right */}
+        <div className="lg:hidden ml-auto">
+          <button
+            onClick={toggleMenu}
+            className="text-white focus:outline-none text-transparent"
+          >
+            <div className="space-y-1.5">
+              <div className="w-6 h-0.5 bg-white"></div>
+              <div className="w-6 h-0.5 bg-white"></div>
+              <div className="w-6 h-0.5 bg-white"></div>
+            </div>
+          </button>
+        </div>
+
+        {/* Navbar links for larger screens and centered for small screens */}
         <div
-          className={`dropdown ${
-            isLargeScreen || isDropdownVisible ? "dropdown-open" : ""
-          }`}
+          className={`lg:flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 ${
+            isOpen ? "flex flex-col items-center" : "hidden"
+          } justify-center mt-4 lg:mt-0`}
         >
-          <label
-            tabIndex={0}
-            className={` cursor-pointer btn-circle ${
-              isLargeScreen ? "hidden" : "block"
-            }`}
-            onClick={toggleDropdown}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          {NAVIGATION.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              className="text-white hover:text-blue-300 transition duration-300"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h7"
-              />
-            </svg>{" "}
-          </label>
-          <ul
-            tabIndex={0}
-            className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box  ${
-              isLargeScreen || isDropdownVisible ? "visible" : "hidden"
-            } ${isDropdownVisible && !isLargeScreen ? "bg-secondary " : ""}`}
-          >
-            {NAVIGATION.map((item) => (
-              <li key={item.href}>
-                <Link to={item.href}>{item.label}</Link>
-              </li>
-            ))}
-            <li>
-              <Link to={"/login"} onClick={() => handleLogout()}>
-                Logout
-              </Link>
-            </li>
-          </ul>
+              {item.label}
+            </Link>
+          ))}
         </div>
       </div>
-      <div className="navbar-center">
-        <input
-          type="text"
-          placeholder="Search here"
-          className="input w-full max-w-xs"
-        />
-      </div>
-      <div className="navbar-end"></div>
-    </div>
+    </nav>
   );
 }

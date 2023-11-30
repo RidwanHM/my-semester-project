@@ -26,7 +26,7 @@ function RegisterForm() {
   const handleOnSubmit = async (event) => {
     event.preventDefault();
 
-    const { email, password, name } = event.target.elements;
+    const { email, password, name, avatar } = event.target.elements;
 
     let fieldErrors = {};
 
@@ -53,13 +53,14 @@ function RegisterForm() {
       name: name.value,
       email: email.value,
       password: password.value,
+      avatar: avatar.value,
     };
 
     setIsLoading(true);
 
     try {
       const response = await fetch(
-        "https://api.noroff.dev/api/v1/social/auth/register",
+        "https://api.noroff.dev/api/v1/auction/auth/register",
         {
           method: "POST",
           headers: {
@@ -132,6 +133,27 @@ function RegisterForm() {
               {error.name && (
                 <p className="text-red-500 text-xs mt-2">{error.name}</p>
               )}
+            </div>
+
+            <div>
+              <label
+                htmlFor="avatar"
+                className="block text-sm font-medium leading-6 text-custom-aqua"
+              >
+                Avatar
+              </label>
+              <div className="mt-2">
+                <input
+                  id="avatar"
+                  name="avatar"
+                  type="url"
+                  className="block w-full text-sm text-white-900
+                  file:mr-4 file:rounded-full file:border-0
+                  file:text-sm file:font-semibold
+                  file:bg-violet-50 file:text-violet-700
+                  hover:file:bg-violet-100"
+                />
+              </div>
             </div>
 
             <div>
