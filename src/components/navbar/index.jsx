@@ -1,9 +1,25 @@
 import { Link } from "@tanstack/react-router";
 import { NAVIGATION } from "../../lib/constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [userCredits, setUserCredits] = useState("");
+  const [userAvatar, setUserAvatar] = useState("");
+
+  useEffect(() => {
+    // Retrieve user details from local storage
+    const storedUserName = localStorage.getItem("user_name");
+    const storedUserCredits = localStorage.getItem("user_credits");
+    const storedUserAvatar = localStorage.getItem("user_avatar");
+
+    if (storedUserName && storedUserCredits && storedUserAvatar) {
+      setUserName(storedUserName);
+      setUserCredits(storedUserCredits);
+      setUserAvatar(storedUserAvatar);
+    }
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -21,6 +37,21 @@ export default function Navbar() {
             Auction House
           </Link>
         </div>
+
+        {/* User Info and Avatar in the middle if logged in */}
+        {userName && (
+          <div className="hidden lg:flex items-center">
+            <img
+              src={userAvatar}
+              alt="User Avatar"
+              className="w-10 h-10 rounded-full mr-4"
+            />
+            <div>
+              <span className="text-white text-lg">{userName}</span>
+              <div className="text-white text-sm">Credits: {userCredits}</div>
+            </div>
+          </div>
+        )}
 
         {/* Hamburger icon for small screens on the right */}
         <div className="lg:hidden ml-auto">
