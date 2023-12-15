@@ -60,98 +60,103 @@ export default function AuctionListingForm({ onAddListing }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <label
-          htmlFor="title"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Title
-        </label>
-        <input
-          type="text"
-          id="title"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
-      <div>
-        <label
-          htmlFor="description"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Description
-        </label>
-        <textarea
-          id="description"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </div>
-      <div>
-        <label
-          htmlFor="tags"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Tags (comma-separated)
-        </label>
-        <input
-          type="text"
-          id="tags"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          value={tags}
-          onChange={(e) => setTags(e.target.value)}
-        />
-      </div>
-      <div>
-        <label
-          htmlFor="mediaUrls"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Media URLs (comma-separated)
-        </label>
-        <input
-          type="text"
-          id="mediaUrls"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          value={mediaUrls}
-          onChange={(e) => setMediaUrls(e.target.value)}
-        />
-      </div>
-      <div>
-        <label
-          htmlFor="endsAt"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Ends At
-        </label>
-        <input
-          type="datetime-local"
-          id="endsAt"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          value={endsAt}
-          onChange={(e) => setEndsAt(e.target.value)}
-        />
-      </div>
-      <div className="flex justify-end">
-        <button
-          type="button"
-          onClick={() => navigate(-1)}
-          className="text-sm font-semibold leading-6 text-gray-900"
-        >
-          Cancel
-        </button>
-        <button
-          type="submit"
-          className="ml-4 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-        >
-          Create Listing
-        </button>
-        {successMessage && <p className="text-green-500">{successMessage}</p>}
-      </div>
-    </form>
+    <div className="flex flex-col justify-center min-h-full px-4 py-6 bg-custom lg:px-8">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6  sm:mx-auto sm:w-full sm:max-w-sm"
+      >
+        <div>
+          <label
+            htmlFor="title"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Title
+          </label>
+          <input
+            type="text"
+            id="title"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="description"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Description
+          </label>
+          <textarea
+            id="description"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="tags"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Tags (comma-separated)
+          </label>
+          <input
+            type="text"
+            id="tags"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            value={tags}
+            onChange={(e) => setTags(e.target.value)}
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="mediaUrls"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Media URLs (comma-separated)
+          </label>
+          <input
+            type="text"
+            id="mediaUrls"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            value={mediaUrls}
+            onChange={(e) => setMediaUrls(e.target.value)}
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="endsAt"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Ends At
+          </label>
+          <input
+            type="datetime-local"
+            id="endsAt"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            value={endsAt}
+            onChange={(e) => setEndsAt(e.target.value)}
+          />
+        </div>
+        <div className="flex justify-end">
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="ml-4 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          >
+            Create Listing
+          </button>
+          {successMessage && <p className="text-green-500">{successMessage}</p>}
+        </div>
+      </form>
+    </div>
   );
 }
 

@@ -7,8 +7,13 @@ export default function Navbar() {
   const [userName, setUserName] = useState("");
   const [userCredits, setUserCredits] = useState("");
   const [userAvatar, setUserAvatar] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
+    // Check if user is logged in
+    const accessToken = localStorage.getItem("access_token");
+    setIsLoggedIn(!!accessToken);
+
     // Retrieve user details from local storage
     const storedUserName = localStorage.getItem("user_name");
     const storedUserCredits = localStorage.getItem("user_credits");
@@ -23,6 +28,15 @@ export default function Navbar() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("user_name");
+    localStorage.removeItem("user_credits");
+    localStorage.removeItem("user_avatar");
+    setIsLoggedIn(false);
+    window.location.reload();
   };
 
   return (
@@ -82,6 +96,15 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
+          {isLoggedIn ? (
+            <button onClick={handleLogout} className="text-white">
+              Logout
+            </button>
+          ) : (
+            <Link to="/login" className="text-white">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </nav>

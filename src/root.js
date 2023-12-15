@@ -4,6 +4,7 @@ import LoginPage from "./pages/Login";
 import RegisterPage from "./pages/Register";
 import ListingPage from "./pages/Listing";
 import ListingsPage from "./pages/Listings";
+import ProfilePage from "./pages/profile";
 import Root from "./App";
 
 const rootRoute = new RootRoute({
@@ -42,6 +43,12 @@ const ListingsRoute = new Route({
   component: ListingsPage,
 });
 
+const ProfileRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: "/profile",
+  component: ProfilePage,
+});
+
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -49,6 +56,7 @@ const routeTree = rootRoute.addChildren([
   registerRoute,
   ListingRoute,
   ListingsRoute,
+  ProfileRoute,
 ]);
 
 export const router = new Router({ routeTree });

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
 
 export default function ListingDetail() {
   const [listing, setListing] = useState(null);
@@ -6,77 +7,132 @@ export default function ListingDetail() {
   const [error, setError] = useState(null);
   const [bidAmount, setBidAmount] = useState("");
   const [userCredits, setUserCredits] = useState(0);
-  const [highestBid, setHighestBid] = useState(0); // State to track the highest bid
+  const [highestBid, setHighestBid] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchListing = async () => {
-      try {
-        setIsLoading(true);
-
-        // Use URLSearchParams to get the listing ID from the query string
-        const searchParams = new URLSearchParams(window.location.search);
-        const id = searchParams.get("id");
-
-        // Include the _bids query parameter in the request URL
-        const response = await fetch(
-          `https://api.noroff.dev/api/v1/auction/listings/${id}?_bids=true`
-        );
-        if (!response.ok) throw new Error("Data fetch failed");
-        const data = await response.json();
-        setListing(data);
-
-        // Load user credits from localStorage and set it to state
-        const credits = parseInt(localStorage.getItem("user_credits"), 10) || 0;
-        setUserCredits(credits);
-
-        // Calculate the highest bid
-        const highestBidValue =
-          data.bids && data.bids.length > 0
-            ? Math.max(...data.bids.map((bid) => bid.amount))
-            : 0;
-        setHighestBid(highestBidValue);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     fetchListing();
   }, []);
 
-  const handleBid = async () => {
-    // ... existing handleBid logic
-
-    // Update the user credits and highest bid after a successful bid
+  const fetchListing = async () => {
     try {
-      // ... existing fetch logic for placing a bid
+      setIsLoading(true);
+      const searchParams = new URLSearchParams(window.location.search);
+      const id = searchParams.get("id");
+      const token = localStorage.getItem("access_token");
 
-      alert("Bid placed successfully!");
+      const response = await fetch(
+        `https://api.noroff.dev/api/v1/auction/listings/${id}?_bids=true`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-      // Update user credits in both state and localStorage
-      const newCredits = userCredits - Number(bidAmount);
-      setUserCredits(newCredits);
-      localStorage.setItem("user_credits", newCredits.toString());
+      if (!response.ok) throw new Error("Data fetch failed");
+      const data = await response.json();
 
-      // Update highest bid
-      setHighestBid(Math.max(highestBid, Number(bidAmount)));
+      setListing(data);
+      setUserCredits(parseInt(localStorage.getItem("user_credits"), 10) || 0);
+      setHighestBid(
+        data.bids && data.bids.length > 0
+          ? Math.max(...data.bids.map((bid) => bid.amount))
+          : 0
+      );
     } catch (err) {
       setError(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  // ... existing rendering logic
+  const validateBid = () => {
+    const bidValue = Number(bidAmount);
+    if (isNaN(bidValue) || bidValue <= 0) {
+      setError("Invalid bid amount");
+      return false;
+    }
+    if (bidValue > userCredits) {
+      setError("Bid exceeds your credit limit");
+      return false;
+    }
+    if (bidValue <= highestBid) {
+      setError("Bid must be higher than the current highest bid");
+      return false;
+    }
+    if (new Date(listing.endsAt) < new Date()) {
+      setError("This listing has ended");
+      return false;
+    }
+    return true;
+  };
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  const submitBid = async () => {
+    const token = localStorage.getItem("access_token");
 
+    const response = await fetch(
+      `https://api.noroff.dev/api/v1/auction/listings/${listing.id}/bids`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ amount: Number(bidAmount) }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to place bid");
+    }
+  };
+
+  const handleBid = async () => {
+    if (!validateBid()) return;
+
+    try {
+      await submitBid();
+
+      // Deduct bid amount from user credits
+      const newCredits = userCredits - Number(bidAmount);
+      localStorage.setItem("user_credits", newCredits.toString());
+      setUserCredits(newCredits);
+
+      alert("Bid placed successfully!");
+
+      // Refresh the page to reflect the changes
+      window.location.reload();
+    } catch (err) {
+      setError(`Failed to place bid: ${err.message}`);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p>Error: {error}</p>
+      </div>
+    );
+  }
   return (
-    <div className="container mx-auto p-80">
+    <div className="flex flex-col justify-center flex-1 min-h-full px-6 py-12 bg-custom lg:px-8">
       {listing && (
-        <div className="bg-white-100 p-20 rounded-md border-2 border-white-300">
-          <img className="mt-1" src={listing.media[0]} alt={listing.title} />
-          <h1 className="text-2xl font-bold mb-2 text-red overflow-hidden whitespace-nowrap text-overflow-ellipsis">
+        <div className="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto">
+          <img
+            className="rounded-md mb-4"
+            src={listing.media[0]}
+            alt={listing.title}
+          />
+          <h1 className="text-2xl font-bold mb-2 text-custom-aqua">
             {listing.title}
           </h1>
           <p className="text-gray-700 mb-4">{listing.description}</p>
@@ -86,15 +142,18 @@ export default function ListingDetail() {
           <p className="text-gray-600">Bids: {listing._count.bids}</p>
           <p className="text-gray-600">Highest Bid: {highestBid}</p>
           <p className="text-gray-600">Your Credits: {userCredits}</p>
-          <div>
+          <div className="mt-4">
             <input
               type="number"
               value={bidAmount}
               onChange={(e) => setBidAmount(e.target.value)}
               placeholder="Enter bid amount"
-              className="input input-bordered w-full max-w-xs"
+              className="px-1 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
-            <button onClick={handleBid} className="btn btn-primary">
+            <button
+              onClick={handleBid}
+              className="mt-2 flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
               Place Bid
             </button>
           </div>
