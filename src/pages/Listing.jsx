@@ -1,11 +1,11 @@
 import Navigation from "../components/navbar";
-import ListingDetail from "../components/listings";
+import AuctionListingForm from "../components/listing";
 
 export default function ListingPage() {
   return (
     <>
       <Navigation />
-      <ListingDetail />
+      <AuctionListingForm />
     </>
   );
 }
