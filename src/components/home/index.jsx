@@ -38,10 +38,9 @@ export default function Homefetch() {
             className="bg-white-100 p-6 rounded-md border-2 border-blue-300 block"
           >
             <img className="mt-4" src={listing.media[0]} alt={listing.title} />
-            <h1 className="text-2xl font-bold mb-2 text-white overflow-hidden whitespace-nowrap text-overflow-ellipsis">
+            <h1 className="text-2xl font-bold mb-2 text-black overflow-hidden whitespace-nowrap text-overflow-ellipsis">
               {listing.title}
             </h1>
-            <p className="text-gray-700 mb-4">{listing.description}</p>
             <p className="text-gray-600">
               Ends at: {new Date(listing.endsAt).toLocaleString()}
             </p>
