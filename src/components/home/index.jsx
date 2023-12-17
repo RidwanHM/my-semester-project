@@ -21,32 +21,32 @@ export default function Homefetch() {
   );
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="mx-auto bg-white p-4">
       <input
         type="text"
         placeholder="Search listings..."
-        className="mb-4 p-2 border border-gray-300 rounded"
+        className="mb-4 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
+
       <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4">
         {filteredListings.map((listing) => (
-          <div
+          <a
             key={listing.id}
-            className="bg-white-100 p-6 rounded-md border-2 border-blue-300"
+            href={`/listings/?id=${listing.id}`}
+            className="bg-white-100 p-6 rounded-md border-2 border-blue-300 block"
           >
             <img className="mt-4" src={listing.media[0]} alt={listing.title} />
-            <a href={`/listings/?id=${listing.id}`}>
-              <h1 className="text-2xl font-bold mb-2 text-white overflow-hidden whitespace-nowrap text-overflow-ellipsis">
-                {listing.title}
-              </h1>
-            </a>
+            <h1 className="text-2xl font-bold mb-2 text-white overflow-hidden whitespace-nowrap text-overflow-ellipsis">
+              {listing.title}
+            </h1>
             <p className="text-gray-700 mb-4">{listing.description}</p>
             <p className="text-gray-600">
               Ends at: {new Date(listing.endsAt).toLocaleString()}
             </p>
             <p className="text-gray-600">Bids: {listing._count.bids}</p>
-          </div>
+          </a>
         ))}
       </div>
     </div>

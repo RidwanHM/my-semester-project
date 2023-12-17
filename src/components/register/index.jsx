@@ -87,14 +87,14 @@ function RegisterForm() {
   };
 
   return (
-    <div className="flex flex-col justify-center flex-1 min-h-full px-6 py-12 bg-custom lg:px-8 card w-full max-w-[100%] h-[300px] md:h-auto  glass">
+    <div className="flex flex-col justify-center flex-1 min-h-full px-6 py-12 md:py-6 lg:px-8 bg-custom card w-full max-w-[100%] h-[300px] md:h-auto glass">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
           className="w-auto h-10 mx-auto"
           src="../src/assets/NoHoverLogo.svg"
           alt="Your Company"
         />
-        <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-center text-custom-aqua">
+        <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-center text-black">
           Make a new account
         </h2>
       </div>
@@ -108,11 +108,14 @@ function RegisterForm() {
             </p>
           </section>
         ) : (
-          <form className="space-y-6" onSubmit={handleOnSubmit}>
+          <form
+            className="space-y-6 shadow-lg px-4 py-6"
+            onSubmit={handleOnSubmit}
+          >
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium leading-6 text-custom-aqua"
+                className="block text-sm font-medium leading-6 text-black"
               >
                 Name
               </label>
@@ -138,7 +141,7 @@ function RegisterForm() {
             <div>
               <label
                 htmlFor="avatar"
-                className="block text-sm font-medium leading-6 text-custom-aqua"
+                className="block text-sm font-medium leading-6 text-black"
               >
                 Avatar
               </label>
@@ -159,7 +162,7 @@ function RegisterForm() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-custom-aqua"
+                className="block text-sm font-medium leading-6 text-black"
               >
                 Email address
               </label>
@@ -186,7 +189,7 @@ function RegisterForm() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-custom-aqua"
+                  className="block text-sm font-medium leading-6 text-black"
                 >
                   Password
                 </label>
@@ -212,7 +215,7 @@ function RegisterForm() {
               <button
                 disabled={isLoading}
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-custom-aqua px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 {isLoading ? "Registering" : "Sign up"}
               </button>

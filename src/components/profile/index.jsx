@@ -72,25 +72,27 @@ function AuctionListings() {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="mb-4 flex justify-between">
-        <div>
-          <h2 className="text-2xl font-bold">Your Profile</h2>
-          <div className="flex items-center mt-2">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-white">
+      <div className="p-4 w-full max-w-2xl bg-white rounded-lg shadow-md py-6 px-4">
+        <div className="mb-6">
+          <h2 className="text-3xl font-bold text-center text-gray-800">
+            Your Profile
+          </h2>
+          <div className="flex items-center justify-center mt-4">
             <img
-              className="w-10 h-10 rounded-full mr-2"
+              className="w-16 h-16 rounded-full border-2 border-blue-500 mr-4"
               src={userAvatar}
               alt={`${userName}'s Avatar`}
             />
             <div>
-              <p className="font-semibold">{userName}</p>
+              <p className="font-semibold text-lg text-black">{userName}</p>
               <p className="text-gray-600">Credits: {userCredits}</p>
             </div>
           </div>
         </div>
-        <div>
+        <div className="text-center">
           <button
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            className="bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600 transition-colors duration-200"
             onClick={handleChangeAvatar}
           >
             Change Avatar
@@ -100,11 +102,11 @@ function AuctionListings() {
       {loading ? (
         <p>Loading...</p>
       ) : listings.length > 0 ? (
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 py-6 px-4">
           {listings.map((listing) => (
             <div
               key={listing.id}
-              className="bg-white-100 p-6 rounded-md border-2 border-blue-300"
+              className="bg-white p-6 rounded-md border-2 border-blue-300"
             >
               <img
                 className="mt-4"
@@ -112,7 +114,7 @@ function AuctionListings() {
                 alt={listing.title}
               />
               <a href={`/listings/?id=${listing.id}`}>
-                <h1 className="text-2xl font-bold mb-2 text-white overflow-hidden whitespace-nowrap text-overflow-ellipsis">
+                <h1 className="text-2xl font-bold mb-2 text-black overflow-hidden whitespace-nowrap text-overflow-ellipsis">
                   {listing.title}
                 </h1>
               </a>

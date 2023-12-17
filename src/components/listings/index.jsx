@@ -124,7 +124,7 @@ export default function ListingDetail() {
     );
   }
   return (
-    <div className="flex flex-col justify-center flex-1 min-h-full px-6 py-12 bg-custom lg:px-8">
+    <div className="flex flex-col justify-center flex-1 min-h-full px-6 py-12 bg-white lg:px-8">
       {listing && (
         <div className="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto">
           <img
@@ -132,7 +132,7 @@ export default function ListingDetail() {
             src={listing.media[0]}
             alt={listing.title}
           />
-          <h1 className="text-2xl font-bold mb-2 text-custom-aqua">
+          <h1 className="text-2xl font-bold mb-2 text-black">
             {listing.title}
           </h1>
           <p className="text-gray-700 mb-4">{listing.description}</p>

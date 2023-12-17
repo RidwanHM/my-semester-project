@@ -75,14 +75,14 @@ function LoginForm() {
   if (error.general) return <div>An error occurred: {error.general}</div>;
 
   return (
-    <div className="flex flex-col justify-center flex-1 min-h-full px-6 py-12 bg-custom lg:px-8 card w-full max-w-[100%] h-[300px] md:h-auto  glass">
+    <div className="flex flex-col justify-center flex-1 min-h-full px-6 py-12 bg-white lg:px-8 card w-full max-w-[100%] h-[300px] md:h-auto  glass">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
           className="w-auto h-10 mx-auto"
           src="../src/assets/NoHoverLogo.svg"
           alt="Your Company"
         />
-        <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-center text-custom-aqua">
+        <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-center text-black">
           Sign in to your account
         </h2>
       </div>
@@ -95,11 +95,14 @@ function LoginForm() {
             </p>
           </section>
         ) : (
-          <form className="space-y-6" onSubmit={handleOnSubmit}>
+          <form
+            className="space-y-6 shadow-lg px-4 py-6"
+            onSubmit={handleOnSubmit}
+          >
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-custom-aqua"
+                className="block text-sm font-medium leading-6 text-black"
               >
                 Email address
               </label>
@@ -122,7 +125,7 @@ function LoginForm() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-custom-aqua"
+                  className="block text-sm font-medium leading-6 text-black"
                 >
                   Password
                 </label>
@@ -136,7 +139,7 @@ function LoginForm() {
                   autoComplete="current-password"
                   required
                   defaultValue="UzI1NiIsInR5cCI"
-                  className="block w-full rounded-md border-0 px-1 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-1 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
               {error.password && (
@@ -148,7 +151,7 @@ function LoginForm() {
               <button
                 disabled={isLoading}
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-custom-aqua px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 {isLoading ? "signing in" : "Sign in"}
               </button>

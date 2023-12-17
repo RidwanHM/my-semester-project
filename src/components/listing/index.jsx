@@ -60,11 +60,14 @@ export default function AuctionListingForm({ onAddListing }) {
   };
 
   return (
-    <div className="flex flex-col justify-center min-h-full px-4 py-6 bg-custom lg:px-8">
+    <div className="flex flex-col justify-center min-h-full px-4 py-6 bg-white lg:px-8">
       <form
         onSubmit={handleSubmit}
-        className="space-y-6  sm:mx-auto sm:w-full sm:max-w-sm"
+        className="space-y-6 px-4 py-6 shadow-md  sm:mx-auto sm:w-full sm:max-w-sm"
       >
+        <h2 className="text-2xl font-bold text-black mb-6">
+          Create an Auction Listing
+        </h2>
         <div>
           <label
             htmlFor="title"
