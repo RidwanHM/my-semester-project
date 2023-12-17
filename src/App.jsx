@@ -8,9 +8,7 @@ function App() {
         <Outlet />
       </main>
 
-      <footer>
-        <small>Created with ❤️ by You</small>
-      </footer>
+      <footer></footer>
     </>
   );
 }

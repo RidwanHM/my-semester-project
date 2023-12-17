@@ -48,7 +48,11 @@ export default function Navbar() {
             to="/"
             className="text-white text-lg lg:text-3xl font-extrabold tracking-tight"
           >
-            Auction House
+            <img
+              className="w-auto h-20 mx-auto"
+              src="../src/assets/logo.png"
+              alt="Your Company"
+            />
           </Link>
         </div>
 
