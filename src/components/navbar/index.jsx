@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { NAVIGATION } from "../../lib/constants";
 import { useState, useEffect } from "react";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/wl.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
