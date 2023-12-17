@@ -42,18 +42,15 @@ export default function AuctionListingForm({ onAddListing }) {
 
       const newListing = await response.json();
 
-      // Call onAddListing if it is a function
       if (typeof onAddListing === "function") {
         onAddListing(newListing);
       }
 
-      // Set success message
       setSuccessMessage("Listing created successfully!");
 
-      // After a short delay, reload the page
       setTimeout(() => {
         window.location.reload();
-      }, 3000); // 3 seconds delay
+      }, 3000);
     } catch (error) {
       console.error("Error creating listing:", error);
     }
@@ -68,7 +65,7 @@ export default function AuctionListingForm({ onAddListing }) {
         <h2 className="text-2xl font-bold text-black mb-6">
           Create an Auction Listing
         </h2>
-        {/* Title Input */}
+
         <div>
           <label
             htmlFor="title"
@@ -84,7 +81,7 @@ export default function AuctionListingForm({ onAddListing }) {
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        {/* Description Input */}
+
         <div>
           <label
             htmlFor="description"
@@ -99,7 +96,7 @@ export default function AuctionListingForm({ onAddListing }) {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        {/* Tags Input */}
+
         <div>
           <label
             htmlFor="tags"
@@ -115,7 +112,7 @@ export default function AuctionListingForm({ onAddListing }) {
             onChange={(e) => setTags(e.target.value)}
           />
         </div>
-        {/* Media URLs Input */}
+
         <div>
           <label
             htmlFor="mediaUrls"
@@ -131,7 +128,7 @@ export default function AuctionListingForm({ onAddListing }) {
             onChange={(e) => setMediaUrls(e.target.value)}
           />
         </div>
-        {/* Ends At Input */}
+
         <div>
           <label
             htmlFor="endsAt"
@@ -142,12 +139,12 @@ export default function AuctionListingForm({ onAddListing }) {
           <input
             type="datetime-local"
             id="endsAt"
-            className="mt-1 block w-full rounded-md border border-gray-300 py-1.5 bg-white text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            className="mt-1 block w-full rounded-md border border-gray-100 py-1.5 bg-gray text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             value={endsAt}
             onChange={(e) => setEndsAt(e.target.value)}
           />
         </div>
-        {/* Buttons */}
+
         <div className="flex justify-end">
           <button
             type="button"
