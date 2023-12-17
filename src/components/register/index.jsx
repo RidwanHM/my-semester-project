@@ -24,6 +24,7 @@ function RegisterForm() {
     const passwordRegex = /^.{8,}$/;
     return passwordRegex.test(password);
   };
+
   const handleOnSubmit = async (event) => {
     event.preventDefault();
 
@@ -43,6 +44,10 @@ function RegisterForm() {
 
     if (!validatePassword(password.value)) {
       fieldErrors.password = "Password must be at least 8 characters.";
+    }
+
+    if (!avatar.value) {
+      fieldErrors.avatar = "Avatar is required.";
     }
 
     if (Object.keys(fieldErrors).length > 0) {
@@ -109,6 +114,7 @@ function RegisterForm() {
             className="space-y-6 shadow-lg px-4 py-6"
             onSubmit={handleOnSubmit}
           >
+            {/* Name input */}
             <div>
               <label
                 htmlFor="name"
@@ -116,7 +122,6 @@ function RegisterForm() {
               >
                 Name
               </label>
-
               <div className="mt-2">
                 <input
                   id="name"
@@ -127,7 +132,7 @@ function RegisterForm() {
                   defaultValue={`RandomUser_${Math.floor(
                     Math.random() * 10000000
                   )}`}
-                  className="px-1 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="px-1 block w-full rounded-md border-0 py-1.5 text-gray shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
               {error.name && (
@@ -135,6 +140,7 @@ function RegisterForm() {
               )}
             </div>
 
+            {/* Avatar input */}
             <div>
               <label
                 htmlFor="avatar"
@@ -147,15 +153,20 @@ function RegisterForm() {
                   id="avatar"
                   name="avatar"
                   type="url"
-                  className="block w-full text-sm text-white-900
+                  required
+                  className="block w-full text-sm text-gray-900
                   file:mr-4 file:rounded-full file:border-0
                   file:text-sm file:font-semibold
                   file:bg-violet-50 file:text-violet-700
                   hover:file:bg-violet-100"
                 />
               </div>
+              {error.avatar && (
+                <p className="text-red-500 text-xs mt-2">{error.avatar}</p>
+              )}
             </div>
 
+            {/* Email input */}
             <div>
               <label
                 htmlFor="email"
@@ -163,7 +174,6 @@ function RegisterForm() {
               >
                 Email address
               </label>
-
               <div className="mt-2">
                 <input
                   id="email"
@@ -174,7 +184,7 @@ function RegisterForm() {
                   defaultValue={`${Math.floor(
                     Math.random() * 10000000
                   )}-last@stud.noroff.no`}
-                  className="px-1 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="px-1 block w-full rounded-md border-0 py-1.5 text-gray shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
               {error.email && (
@@ -182,6 +192,7 @@ function RegisterForm() {
               )}
             </div>
 
+            {/* Password input */}
             <div>
               <div className="flex items-center justify-between">
                 <label
@@ -191,7 +202,6 @@ function RegisterForm() {
                   Password
                 </label>
               </div>
-
               <div className="mt-2">
                 <input
                   id="password"
@@ -200,7 +210,7 @@ function RegisterForm() {
                   autoComplete="current-password"
                   required
                   defaultValue="UzI1NiIsInR5cCI"
-                  className="block w-full rounded-md border-0 px-1 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-1 py-1.5 text-gray shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
               {error.password && (
@@ -208,6 +218,7 @@ function RegisterForm() {
               )}
             </div>
 
+            {/* Submit button */}
             <div>
               <button
                 disabled={isLoading}
@@ -220,6 +231,7 @@ function RegisterForm() {
           </form>
         )}
 
+        {/* Navigation link to login */}
         <p className="mt-10 text-sm text-center text-gray-500">
           Already a member?{" "}
           <a
