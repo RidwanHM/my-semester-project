@@ -63,11 +63,12 @@ export default function AuctionListingForm({ onAddListing }) {
     <div className="flex flex-col justify-center min-h-full px-4 py-6 bg-white lg:px-8">
       <form
         onSubmit={handleSubmit}
-        className="space-y-6 px-4 py-6 shadow-md  sm:mx-auto sm:w-full sm:max-w-sm"
+        className="space-y-6 px-4 py-6 shadow-md sm:mx-auto sm:w-full sm:max-w-sm"
       >
         <h2 className="text-2xl font-bold text-black mb-6">
           Create an Auction Listing
         </h2>
+        {/* Title Input */}
         <div>
           <label
             htmlFor="title"
@@ -78,11 +79,12 @@ export default function AuctionListingForm({ onAddListing }) {
           <input
             type="text"
             id="title"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            className="mt-1 block w-full rounded-md border border-gray-300 py-1.5 bg-white text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
+        {/* Description Input */}
         <div>
           <label
             htmlFor="description"
@@ -92,11 +94,12 @@ export default function AuctionListingForm({ onAddListing }) {
           </label>
           <textarea
             id="description"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            className="mt-1 block w-full rounded-md border border-gray-300 py-1.5 bg-white text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
+        {/* Tags Input */}
         <div>
           <label
             htmlFor="tags"
@@ -107,11 +110,12 @@ export default function AuctionListingForm({ onAddListing }) {
           <input
             type="text"
             id="tags"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            className="mt-1 block w-full rounded-md border border-gray-300 py-1.5 bg-white text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             value={tags}
             onChange={(e) => setTags(e.target.value)}
           />
         </div>
+        {/* Media URLs Input */}
         <div>
           <label
             htmlFor="mediaUrls"
@@ -122,11 +126,12 @@ export default function AuctionListingForm({ onAddListing }) {
           <input
             type="text"
             id="mediaUrls"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            className="mt-1 block w-full rounded-md border border-gray-300 py-1.5 bg-white text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             value={mediaUrls}
             onChange={(e) => setMediaUrls(e.target.value)}
           />
         </div>
+        {/* Ends At Input */}
         <div>
           <label
             htmlFor="endsAt"
@@ -137,11 +142,12 @@ export default function AuctionListingForm({ onAddListing }) {
           <input
             type="datetime-local"
             id="endsAt"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            className="mt-1 block w-full rounded-md border border-gray-300 py-1.5 bg-white text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             value={endsAt}
             onChange={(e) => setEndsAt(e.target.value)}
           />
         </div>
+        {/* Buttons */}
         <div className="flex justify-end">
           <button
             type="button"
@@ -156,13 +162,13 @@ export default function AuctionListingForm({ onAddListing }) {
           >
             Create Listing
           </button>
-          {successMessage && <p className="text-green-500">{successMessage}</p>}
         </div>
+        {successMessage && <p className="text-green-500">{successMessage}</p>}
       </form>
     </div>
   );
 }
 
 AuctionListingForm.propTypes = {
-  onAddListing: PropTypes.func, // Remove `.isRequired`
+  onAddListing: PropTypes.func,
 };

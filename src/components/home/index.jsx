@@ -25,7 +25,7 @@ export default function Homefetch() {
       <input
         type="text"
         placeholder="Search listings..."
-        className="mb-4 p-3 border border-gray-300 text-gray rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+        className="mb-4 p-3 border border-gray-300 text-black rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />

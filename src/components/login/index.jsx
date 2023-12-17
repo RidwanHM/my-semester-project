@@ -76,7 +76,7 @@ function LoginForm() {
   if (error.general) return <div>An error occurred: {error.general}</div>;
 
   return (
-    <div className="flex flex-col justify-center flex-1 min-h-full px-6 py-12 bg-white lg:px-8 card w-full max-w-[100%] h-[300px] md:h-auto  glass">
+    <div className="flex flex-col justify-center flex-1 min-h-full px-6 py-12 bg-white lg:px-8 card w-full max-w-[100%] h-[300px] md:h-auto glass">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img className="w-auto h-20 mx-auto" src={logo} alt="Your Company" />
         <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-center text-black">
@@ -96,6 +96,7 @@ function LoginForm() {
             className="space-y-6 shadow-lg px-4 py-6"
             onSubmit={handleOnSubmit}
           >
+            {/* Email Input */}
             <div>
               <label
                 htmlFor="email"
@@ -103,7 +104,6 @@ function LoginForm() {
               >
                 Email address
               </label>
-
               <div className="mt-2">
                 <input
                   id="email"
@@ -112,23 +112,20 @@ function LoginForm() {
                   autoComplete="email"
                   required
                   defaultValue="first.last@stud.noroff.no"
-                  className="px-1 block w-full rounded-md border border-gray-300 py-1.5 text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 sm:text-sm sm:leading-6"
-                  style={{ backgroundColor: "white", color: "black" }} // Fallback inline styling
+                  className="px-1 block w-full rounded-md border border-gray-300 py-1.5 bg-white text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 sm:text-sm sm:leading-6"
                 />
               </div>
               {error.email && <div className="text-red-500">{error.email}</div>}
             </div>
 
+            {/* Password Input */}
             <div>
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-black"
-                >
-                  Password
-                </label>
-              </div>
-
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium leading-6 text-black"
+              >
+                Password
+              </label>
               <div className="mt-2">
                 <input
                   id="password"
@@ -137,8 +134,7 @@ function LoginForm() {
                   autoComplete="current-password"
                   required
                   defaultValue="UzI1NiIsInR5cCI"
-                  className="block w-full rounded-md border border-gray-300 px-1 py-1.5 text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 sm:text-sm sm:leading-6"
-                  style={{ backgroundColor: "white", color: "black" }} // Fallback inline styling
+                  className="block w-full rounded-md border border-gray-300 px-1 py-1.5 bg-white text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 sm:text-sm sm:leading-6"
                 />
               </div>
               {error.password && (
@@ -146,6 +142,7 @@ function LoginForm() {
               )}
             </div>
 
+            {/* Submit Button */}
             <div>
               <button
                 disabled={isLoading}
@@ -158,6 +155,7 @@ function LoginForm() {
           </form>
         )}
 
+        {/* Sign-up Link */}
         <p className="mt-10 text-sm text-center text-gray-500">
           Not a member?{" "}
           <a
