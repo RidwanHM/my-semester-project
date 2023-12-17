@@ -112,7 +112,8 @@ function LoginForm() {
                   autoComplete="email"
                   required
                   defaultValue="first.last@stud.noroff.no"
-                  className="px-1 block w-full rounded-md border-0 py-1.5 text-gray shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="px-1 block w-full rounded-md border border-gray-300 py-1.5 text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 sm:text-sm sm:leading-6"
+                  style={{ backgroundColor: "white", color: "black" }} // Fallback inline styling
                 />
               </div>
               {error.email && <div className="text-red-500">{error.email}</div>}
@@ -136,7 +137,8 @@ function LoginForm() {
                   autoComplete="current-password"
                   required
                   defaultValue="UzI1NiIsInR5cCI"
-                  className="block w-full rounded-md border-0 px-1 py-1.5 text-gray shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border border-gray-300 px-1 py-1.5 text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 sm:text-sm sm:leading-6"
+                  style={{ backgroundColor: "white", color: "black" }} // Fallback inline styling
                 />
               </div>
               {error.password && (
