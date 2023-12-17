@@ -79,7 +79,7 @@ function LoginForm() {
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
           className="w-auto h-10 mx-auto"
-          src="../src/assets/Logo.png"
+          src="../src/assets/logo.png"
           alt="Your Company"
         />
         <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-center text-black">
