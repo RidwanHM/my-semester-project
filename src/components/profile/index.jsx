@@ -32,7 +32,6 @@ function AuctionListings() {
       `https://api.noroff.dev/api/v1/auction/profiles/${userName}/listings`,
       {
         headers: {
-          // Include your authentication token here
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
       }
