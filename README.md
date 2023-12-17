@@ -15,19 +15,26 @@ Introduction
 For my semester project, I've integrated an API developed by students at Noroff, focusing on the Auction House section. The project, named "Buy & Sell: Auction House," combines a visually appealing interface designed in Figma with functional programming in React.
 
 Design and Development
+
 Color Scheme: A blue theme with a white background for a clean and coherent visual appeal.
 Tools Used: React for programming, supplemented by Tailwind for styling.
 Custom Logo: Designed via logo.com to enhance brand identity.
+
 Website Structure
+
 Pages: Homepage, Profile Page, Listing Page, Listing ID Page, Login, and Registration.
 Navbar: Built using React, with dynamic design and state management for user information.
 Footer: Includes company logo, social media links, and copyright notice.
+
 Features
+
 Home Page: Displays the latest auction listings with an auto-updating feature and a search bar for quick item lookup.
 Listing Page: Allows users to create their own auction listings with a user-friendly interface.
 Listing ID Page: Detailed view of auction items with bidding functionality.
 Profile Page: Personal dashboard displaying user details and auction items.
+
 User Interaction
+
 Login Page: Easy-to-use interface with immediate feedback on login issues.
 Registration Page: Simple sign-up process with validations for security.
 Additional Information
