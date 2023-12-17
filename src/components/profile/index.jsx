@@ -62,12 +62,35 @@ function AuctionListings() {
       });
   }, []);
 
-  const handleChangeAvatar = () => {
-    // Here you can implement logic to change the avatar URL and update it in local storage.
+  const handleChangeAvatar = async () => {
     const newAvatar = prompt("Enter the new avatar URL:");
     if (newAvatar) {
-      localStorage.setItem("user_avatar", newAvatar);
-      setUserAvatar(newAvatar);
+      try {
+        // Construct the endpoint URL using the userName
+        const endpoint = `https://api.noroff.dev/api/v1/auction/profiles/${userName}/media`;
+
+        // Send the PUT request to the backend
+        const response = await fetch(endpoint, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+          body: JSON.stringify({ avatar: newAvatar }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to update avatar");
+        }
+
+        const updatedProfile = await response.json();
+
+        // Update the avatar in local storage and state
+        localStorage.setItem("user_avatar", updatedProfile.avatar);
+        setUserAvatar(updatedProfile.avatar);
+      } catch (error) {
+        console.error("Error updating avatar:", error);
+      }
     }
   };
 
