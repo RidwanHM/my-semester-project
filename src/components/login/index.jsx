@@ -96,7 +96,6 @@ function LoginForm() {
             className="space-y-6 shadow-lg px-4 py-6"
             onSubmit={handleOnSubmit}
           >
-            {/* Email Input */}
             <div>
               <label
                 htmlFor="email"
@@ -111,7 +110,7 @@ function LoginForm() {
                   type="email"
                   autoComplete="email"
                   required
-                  defaultValue="first.last@stud.noroff.no"
+                  defaultValue=""
                   className="px-1 block w-full rounded-md border border-gray-300 py-1.5 bg-white text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -132,7 +131,7 @@ function LoginForm() {
                   type="password"
                   autoComplete="current-password"
                   required
-                  defaultValue="UzI1NiIsInR5cCI"
+                  defaultValue=""
                   className="block w-full rounded-md border border-gray-300 px-1 py-1.5 bg-white text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 sm:text-sm sm:leading-6"
                 />
               </div>

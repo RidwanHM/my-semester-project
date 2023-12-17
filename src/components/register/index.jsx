@@ -114,7 +114,6 @@ function RegisterForm() {
             className="space-y-6 shadow-lg px-4 py-6"
             onSubmit={handleOnSubmit}
           >
-            {/* Name Input */}
             <div>
               <label
                 htmlFor="name"
@@ -129,9 +128,6 @@ function RegisterForm() {
                   type="text"
                   autoComplete="name"
                   required
-                  defaultValue={`RandomUser_${Math.floor(
-                    Math.random() * 10000000
-                  )}`}
                   className="px-1 block w-full rounded-md border border-gray-300 py-1.5 bg-white text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -145,7 +141,7 @@ function RegisterForm() {
                 htmlFor="avatar"
                 className="block text-sm font-medium leading-6 text-black"
               >
-                Avatar
+                Avatar URL
               </label>
               <div className="mt-2">
                 <input
@@ -161,7 +157,6 @@ function RegisterForm() {
               )}
             </div>
 
-            {/* Email Input */}
             <div>
               <label
                 htmlFor="email"
@@ -176,9 +171,6 @@ function RegisterForm() {
                   type="email"
                   autoComplete="email"
                   required
-                  defaultValue={`${Math.floor(
-                    Math.random() * 10000000
-                  )}-last@stud.noroff.no`}
                   className="px-1 block w-full rounded-md border border-gray-300 py-1.5 bg-white text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -187,7 +179,6 @@ function RegisterForm() {
               )}
             </div>
 
-            {/* Password Input */}
             <div>
               <label
                 htmlFor="password"
@@ -202,7 +193,6 @@ function RegisterForm() {
                   type="password"
                   autoComplete="current-password"
                   required
-                  defaultValue="UzI1NiIsInR5cCI"
                   className="block w-full rounded-md border border-gray-300 px-1 py-1.5 bg-white text-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 sm:text-sm sm:leading-6"
                 />
               </div>

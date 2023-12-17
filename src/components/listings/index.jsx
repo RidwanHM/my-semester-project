@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "@tanstack/react-router";
 
 export default function ListingDetail() {
   const [listing, setListing] = useState(null);
@@ -8,7 +7,6 @@ export default function ListingDetail() {
   const [bidAmount, setBidAmount] = useState("");
   const [userCredits, setUserCredits] = useState(0);
   const [highestBid, setHighestBid] = useState(0);
-  const navigate = useNavigate();
 
   useEffect(() => {
     fetchListing();
