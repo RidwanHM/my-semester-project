@@ -44,7 +44,11 @@ Figma Design: Figma Link
 GitHub Repository: GitHub Repo
 
 Links:
+
 Netlify site: https://dulcet-cucurucho-414f2e.netlify.app/
+
 Noroff api: https://docs.noroff.dev/
+
 Figma: https://www.figma.com/file/Ti15OczMIzg1yGevu3GbkC/Auction-Site? type=design&node-id=0%3A1&mode=design&t=UqqKKFeZdxNYJPjk-1
+
 GitHub repo: https://github.com/RidwanHM/my-semester-project
