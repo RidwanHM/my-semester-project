@@ -125,7 +125,7 @@ function LoginForm() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-black"
+                  className="block text-sm font-medium leading-6 text-white"
                 >
                   Password
                 </label>
