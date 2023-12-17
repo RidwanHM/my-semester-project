@@ -1,5 +1,6 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
+import logo from "../../assets/logo.png";
 
 function RegisterForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -89,11 +90,7 @@ function RegisterForm() {
   return (
     <div className="flex flex-col justify-center flex-1 min-h-full px-6 py-12 md:py-6 lg:px-8 bg-custom card w-full max-w-[100%] h-[300px] md:h-auto glass">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img
-          className="w-auto h-10 mx-auto"
-          src="../src/assets/logo.png"
-          alt="Your Company"
-        />
+        <img className="w-auto h-10 mx-auto" src={logo} alt="Your Company" />
         <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-center text-black">
           Make a new account
         </h2>
