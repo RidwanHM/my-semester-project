@@ -118,7 +118,6 @@ function LoginForm() {
               {error.email && <div className="text-red-500">{error.email}</div>}
             </div>
 
-            {/* Password Input */}
             <div>
               <label
                 htmlFor="password"
@@ -142,7 +141,6 @@ function LoginForm() {
               )}
             </div>
 
-            {/* Submit Button */}
             <div>
               <button
                 disabled={isLoading}
@@ -155,7 +153,6 @@ function LoginForm() {
           </form>
         )}
 
-        {/* Sign-up Link */}
         <p className="mt-10 text-sm text-center text-gray-500">
           Not a member?{" "}
           <a

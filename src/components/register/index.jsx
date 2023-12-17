@@ -140,7 +140,6 @@ function RegisterForm() {
               )}
             </div>
 
-            {/* Avatar Input */}
             <div>
               <label
                 htmlFor="avatar"
@@ -212,7 +211,6 @@ function RegisterForm() {
               )}
             </div>
 
-            {/* Submit Button */}
             <div>
               <button
                 disabled={isLoading}
@@ -225,7 +223,6 @@ function RegisterForm() {
           </form>
         )}
 
-        {/* Navigation Link to Login */}
         <p className="mt-10 text-sm text-center text-gray-500">
           Already a member?{" "}
           <a

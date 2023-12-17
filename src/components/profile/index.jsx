@@ -8,7 +8,6 @@ function AuctionListings() {
   const [userAvatar, setUserAvatar] = useState("");
 
   useEffect(() => {
-    // Retrieve user details from local storage
     const storedUserName = localStorage.getItem("user_name");
     const storedUserCredits = localStorage.getItem("user_credits");
     const storedUserAvatar = localStorage.getItem("user_avatar");
@@ -21,17 +20,14 @@ function AuctionListings() {
   }, []);
 
   useEffect(() => {
-    // Retrieve the username from local storage
     const userName = localStorage.getItem("user_name");
 
-    // Ensure that userName is not null or undefined
     if (!userName) {
       console.error("No user name found in local storage.");
       setLoading(false);
       return;
     }
 
-    // Fetch listings for the specific user
     fetch(
       `https://api.noroff.dev/api/v1/auction/profiles/${userName}/listings`,
       {
@@ -66,10 +62,8 @@ function AuctionListings() {
     const newAvatar = prompt("Enter the new avatar URL:");
     if (newAvatar) {
       try {
-        // Construct the endpoint URL using the userName
         const endpoint = `https://api.noroff.dev/api/v1/auction/profiles/${userName}/media`;
 
-        // Send the PUT request to the backend
         const response = await fetch(endpoint, {
           method: "PUT",
           headers: {
@@ -85,7 +79,6 @@ function AuctionListings() {
 
         const updatedProfile = await response.json();
 
-        // Update the avatar in local storage and state
         localStorage.setItem("user_avatar", updatedProfile.avatar);
         setUserAvatar(updatedProfile.avatar);
       } catch (error) {

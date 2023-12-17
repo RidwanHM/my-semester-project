@@ -5,7 +5,6 @@ export default function Homefetch() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    // API URL with sorting parameters
     const apiUrl =
       "https://api.noroff.dev/api/v1/auction/listings?sort=created&sortOrder=desc";
 
@@ -15,7 +14,6 @@ export default function Homefetch() {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  // Filter the listings based on the search query
   const filteredListings = auctionListings.filter((listing) =>
     listing.title.toLowerCase().includes(searchQuery.toLowerCase())
   );

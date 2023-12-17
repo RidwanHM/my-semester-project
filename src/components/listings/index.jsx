@@ -94,14 +94,12 @@ export default function ListingDetail() {
     try {
       await submitBid();
 
-      // Deduct bid amount from user credits
       const newCredits = userCredits - Number(bidAmount);
       localStorage.setItem("user_credits", newCredits.toString());
       setUserCredits(newCredits);
 
       alert("Bid placed successfully!");
 
-      // Refresh the page to reflect the changes
       window.location.reload();
     } catch (err) {
       setError(`Failed to place bid: ${err.message}`);

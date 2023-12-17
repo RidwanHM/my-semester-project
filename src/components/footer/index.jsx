@@ -10,15 +10,12 @@ function Footer() {
   return (
     <footer className="bg-blue-500 p-4">
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between">
-        {/* Copyright text on the left */}
         <div className="text-white text-lg">© BMSF 2023</div>
 
-        {/* Logo in the middle */}
         <div className="my-4 lg:my-0">
           <img className="w-auto h-20 mx-auto" src={logo} alt="Your Company" />
         </div>
 
-        {/* Social Icons on the right */}
         <div className="flex space-x-4">
           <a
             href="https://facebook.com"
