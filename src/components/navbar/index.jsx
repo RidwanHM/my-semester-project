@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { NAVIGATION } from "../../lib/constants";
 import { useState, useEffect } from "react";
-// Adjust the path as needed
+import logo from "../../assets/logo.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +51,7 @@ export default function Navbar() {
           >
             <img
               className="w-auto h-20 mx-auto"
-              src="../../src/assets/logo.png"
+              src={logo}
               alt="Your Company"
             />
           </Link>
