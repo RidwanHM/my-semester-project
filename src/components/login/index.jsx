@@ -78,7 +78,7 @@ function LoginForm() {
   return (
     <div className="flex flex-col justify-center flex-1 min-h-full px-6 py-12 bg-white lg:px-8 card w-full max-w-[100%] h-[300px] md:h-auto  glass">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img className="w-auto h-10 mx-auto" src={logo} alt="Your Company" />
+        <img className="w-auto h-20 mx-auto" src={logo} alt="Your Company" />
         <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-center text-black">
           Sign in to your account
         </h2>
