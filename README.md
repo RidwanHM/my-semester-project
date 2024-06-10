@@ -1,4 +1,6 @@
-Auction House Ridwan H. Mohamud
+ ![buy   sell logo](https://github.com/RidwanHM/my-semester-project/assets/112473640/9704094f-4acc-4d4e-88e6-217bc72d5fe8)
+
+
 For my semester project, I integrated an API developed by students at Noroff (see Noroff API Documentation). My focus was on the Auction House section, which aligned with the nature of my project. I utilized Figma for designing the layout and aesthetics of my website, ensuring a visually appealing interface. The site, named “Buy & Sell: Auction House,” was launched using Netlify, featuring a custom logo designed via logo.com to enhance brand identity.
 The website's colors scheme centered around a blue theme with a white background, chosen for its clean and coherent visual appeal. For the development, I employed React for programming, supplemented by Tailwind as the styling framework. This combination facilitated an efficient and responsive design process.
 The structure of the website was comprehensive, encompassing six distinct pages: a homepage, profile page, listing page, listing ID page, along with login and registration pages. To streamline the functionality, I created specific components for each data- fetching operation and tailored the code to suit the needs of each individual page.
