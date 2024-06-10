@@ -1,4 +1,6 @@
- ![buy   sell logo](https://github.com/RidwanHM/my-semester-project/assets/112473640/9704094f-4acc-4d4e-88e6-217bc72d5fe8)
+![buy--sell-high-resolution-logo-transparent](https://github.com/RidwanHM/my-semester-project/assets/112473640/aff49fea-4f28-4704-815e-bde18ed98aac)
+
+
 
 
 For my semester project, I integrated an API developed by students at Noroff (see Noroff API Documentation). My focus was on the Auction House section, which aligned with the nature of my project. I utilized Figma for designing the layout and aesthetics of my website, ensuring a visually appealing interface. The site, named “Buy & Sell: Auction House,” was launched using Netlify, featuring a custom logo designed via logo.com to enhance brand identity.
